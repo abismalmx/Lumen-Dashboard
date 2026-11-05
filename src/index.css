@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-stone-950 font-sans text-stone-100 antialiased;
+  }
+
+  body {
+    caret-color: #fbbf24;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 255, 255, 0.22); }
+
+  ::selection {
+    background-color: rgb(251 191 36 / 0.28);
+  }
+
+  /* Numbers never jitter. */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* One authored moment: the top row rises in, staggered. */
+  .animate-rise {
+    animation: rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+  .animate-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 1400ms 260ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .animate-slide { animation: slide 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .animate-fade { animation: fade 900ms 500ms ease-out both; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  .animate-grow {
+    transform-origin: left center;
+    animation: grow 900ms 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-rise, .animate-fade, .animate-grow, .animate-slide { animation: none; }
+    .animate-draw { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
+  }
+}

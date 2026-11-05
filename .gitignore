@@ -1,0 +1,14 @@
+node_modules
+dist
+*.tsbuildinfo
+.DS_Store
+
+# Material de trabajo que no se publica
+shots/
+video/
+.agents/
+.claude/
+skills-lock.json
+.env
+.env.local
+.env.*.local
