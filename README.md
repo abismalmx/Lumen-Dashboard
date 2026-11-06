@@ -2,9 +2,9 @@
 
 A working MVP of an operations dashboard for a usage-based SaaS: revenue, customers and usage in one product, with real sign-in, a real Postgres schema and customers you can create, edit and delete.
 
-**Live demo → https://abismalmx.github.io/lumen-dashboard/**
+**Live demo → https://abismalmx.github.io/Lumen-Dashboard/**
 
-[![CI](https://github.com/abismalmx/lumen-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/abismalmx/lumen-dashboard/actions/workflows/ci.yml)
+[![CI](https://github.com/abismalmx/Lumen-Dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/abismalmx/Lumen-Dashboard/actions/workflows/ci.yml)
 
 The demo is the running app, not a recording of it. Every claim below is backed by code in this repository.
 
@@ -24,7 +24,7 @@ The demo is the running app, not a recording of it. Every claim below is backed 
 
 ## Try it in 60 seconds
 
-1. **Open the demo:** <https://abismalmx.github.io/lumen-dashboard/>
+1. **Open the demo:** <https://abismalmx.github.io/Lumen-Dashboard/>
 2. **Get inside.** With no configuration the app opens straight into the dashboard — nothing to sign up for. If the deployed build was given a Supabase project, you get a sign-in screen instead: use **Explore the demo** for instant access, or **Create account** with an email and password.
 3. **Prove it is real.** Go to **Customers** → **Add customer** → give it a name, an email and a plan → **Create customer**. Open the record, change its **Status**, then **Delete** it. Now reload the page: your record is still there — kept in your browser in demo mode, stored in your own Postgres rows in cloud mode.
 
@@ -92,7 +92,7 @@ npm run build    # production build in dist/
 Every push to `main` publishes the site — that is where the live demo comes from:
 
 1. `.github/workflows/deploy.yml` runs `npm ci`, `npm test` and `npm run build`, then uploads the build as a Pages artifact.
-2. `actions/deploy-pages` publishes it to GitHub Pages at `https://abismalmx.github.io/lumen-dashboard/`. The workflow can also be triggered manually.
+2. `actions/deploy-pages` publishes it to GitHub Pages at `https://abismalmx.github.io/Lumen-Dashboard/`. The workflow can also be triggered manually.
 3. The build uses relative asset paths (`base: "./"` in `vite.config.ts`) and hash URLs (`#/customers`, `#/usage`), so it works from a project sub-path without server rewrites.
 
 To publish the cloud mode, add the two variables as repository **variables** (Settings → Secrets and variables → Actions → Variables): `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. Leave them unset to publish the demo-only build. The anon key is public by design; Row Level Security is what protects the data.

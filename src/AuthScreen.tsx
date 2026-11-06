@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { BrandMark } from "./Dashboard";
 import { useSession } from "./lib/session";
 
@@ -42,6 +42,16 @@ export function AuthScreen() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:22px_22px] [-webkit-mask-image:linear-gradient(to_bottom,black,transparent_85%)] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
       />
       <main className="animate-rise relative w-full max-w-[400px]">
+        <button
+          type="button"
+          onClick={enterDemo}
+          className={`${FOCUS} group mb-8 flex w-full items-center justify-between gap-3 rounded-lg border border-amber-400/25 bg-amber-400/[0.07] px-3.5 py-2.5 text-left text-[13px] text-amber-100 transition-colors hover:border-amber-300/50 hover:bg-amber-400/[0.12]`}
+        >
+          <span>
+            <span className="font-medium">Recruiter or client?</span> Open the live demo in one click.
+          </span>
+          <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
+        </button>
         <div className="flex items-center gap-2.5">
           <BrandMark />
           <span className="text-[15px] font-medium tracking-tight text-stone-50">Lumen</span>
@@ -104,9 +114,24 @@ export function AuthScreen() {
             {busy && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
             {mode === "signin" ? "Sign in" : "Create account"}
           </button>
+
+          <div className="flex items-center gap-3 text-[12px] text-stone-500" aria-hidden>
+            <span className="h-px flex-1 bg-white/[0.08]" />
+            or
+            <span className="h-px flex-1 bg-white/[0.08]" />
+          </div>
+
+          <button
+            type="button"
+            onClick={enterDemo}
+            className={`${FOCUS} inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg border border-amber-400/40 bg-amber-400/[0.06] text-[14px] font-semibold text-amber-200 transition-colors hover:border-amber-300/70 hover:bg-amber-400/[0.12] active:translate-y-px`}
+          >
+            Explore the demo
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </button>
         </form>
 
-        <div className="mt-5 flex items-center justify-between text-[13px]">
+        <div className="mt-5 text-[13px]">
           <button
             type="button"
             onClick={() => {
@@ -117,13 +142,6 @@ export function AuthScreen() {
             className={`${FOCUS} -mx-2 inline-flex h-9 items-center rounded px-2 text-stone-300 underline decoration-white/20 underline-offset-4 transition-colors hover:text-stone-50`}
           >
             {mode === "signin" ? "New here? Create an account" : "Have an account? Sign in"}
-          </button>
-          <button
-            type="button"
-            onClick={enterDemo}
-            className={`${FOCUS} -mx-2 inline-flex h-9 items-center rounded px-2 text-amber-300 transition-colors hover:text-amber-200`}
-          >
-            Explore the demo →
           </button>
         </div>
         <p className="mt-6 text-[12px] leading-relaxed text-stone-500">
